@@ -8,7 +8,7 @@ app.use( bodyParser.urlencoded({extended: false}) );
 var cors = require("cors");
 app.use(cors());
 
-app.listen(3001);
+app.listen(9999);
 console.log("Web伺服器就緒，開始接受用戶端連線.");
 console.log("「Ctrl + C」可結束伺服器程式.");
 
@@ -16,7 +16,7 @@ var mysql = require('mysql');
 const { application, response } = require("express");
 var connection = mysql.createConnection({
 	host : '127.0.0.1',
-	port : 9999,
+	port : 8889,
 	user : 'root',
 	password : 'root',
 	database : 'nba'

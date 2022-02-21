@@ -2,8 +2,8 @@
 -- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
--- 主機： localhost:9999
--- 產生時間： 2022 年 02 月 21 日 14:46
+-- 主機： localhost:8889
+-- 產生時間： 2022 年 02 月 21 日 14:56
 -- 伺服器版本： 5.7.34
 -- PHP 版本： 7.4.21
 
@@ -20,6 +20,8 @@ SET time_zone = "+00:00";
 --
 -- 資料庫: `nba`
 --
+CREATE DATABASE IF NOT EXISTS `nba` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+USE `nba`;
 
 -- --------------------------------------------------------
 
