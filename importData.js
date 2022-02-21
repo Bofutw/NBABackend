@@ -2,9 +2,10 @@ var userJSON = require('./players.json');
 
 let yo = [];
  for(var x in userJSON){
-    let test =Object.keys(userJSON[x])
-
+    let y = parseInt(x)+1;
+    console.log(x)
     yo[x] = "("+
+'"'+y+'"'+","+
 '"'+userJSON[x].name+'"'+","+
 "'"+userJSON[x].team_acronym+"'"+","+
 "'"+userJSON[x].team_name+"'"+","+
@@ -28,7 +29,7 @@ let yo = [];
 "'"+userJSON[x].player_efficiency_rating+"'"+
     ")";
 };   
-
+console.log(yo)
 var mysql = require('mysql');
 const { use } = require('express/lib/application');
 const { CLIENT_LONG_PASSWORD } = require('mysql/lib/protocol/constants/client');
