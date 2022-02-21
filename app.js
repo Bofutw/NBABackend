@@ -8,24 +8,15 @@ app.use( bodyParser.urlencoded({extended: false}) );
 var cors = require("cors");
 app.use(cors());
 
-// 以 express-session 管理狀態資訊
-var session = require('express-session');
-app.use(session({
-    secret: 'secretKey',
-    resave: false,
-    saveUninitialized: true
-}));
-
 app.listen(3001);
 console.log("Web伺服器就緒，開始接受用戶端連線.");
 console.log("「Ctrl + C」可結束伺服器程式.");
-
 
 var mysql = require('mysql');
 const { application, response } = require("express");
 var connection = mysql.createConnection({
 	host : '127.0.0.1',
-	port : 8889,
+	port : 9999,
 	user : 'root',
 	password : 'root',
 	database : 'nba'
@@ -37,8 +28,6 @@ connection.connect(function(err) {
 		return;
 	}
 });
-
-
 
 app.get("/page/:start/:end", function (request, response) {
 	var start = parseInt(request.params.start);
@@ -69,7 +58,7 @@ app.get("/page/:start/:end", function (request, response) {
 		})	
 	
 app.get("/players/all", function (request, response) {
-	console.log("name:");
+	
 	connection.query('select * from players', 
 		'',
 		function(err, rows) {
@@ -87,8 +76,7 @@ app.get("/search/all/:name", function(request,response){
     connection.query("select * from players where name like ?",
 	["%"+name+"%"],
     function(error,rows){
-		console.log("name:"+name);
-		console.log("rows:"+ rows);
+		
 		if(error){
 			console.log(error);
             return;
@@ -111,14 +99,12 @@ app.get("/players/:teamacronym", function(request,response){
     })
 })
 
-
 app.get("/players/:teamacronym/:name", function(request,response){
 	var teamacronym = request.params.teamacronym;
 	var name = request.params.name || "";
     connection.query("select * from players where team_acronym = ? and name like ?",
     [teamacronym,"%"+name+"%"],
     function(error,rows){
-		console.log(name); 
 		if(error){
 			console.log(error);
             return;
@@ -126,5 +112,3 @@ app.get("/players/:teamacronym/:name", function(request,response){
 		response.send(rows);
     })
 })
-
-
