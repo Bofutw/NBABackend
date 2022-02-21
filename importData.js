@@ -34,7 +34,7 @@ const { use } = require('express/lib/application');
 const { CLIENT_LONG_PASSWORD } = require('mysql/lib/protocol/constants/client');
 var database = mysql.createConnection({
 	host : '127.0.0.1',
-	port : 9999,
+	port : 8889,
 	user : 'root',
 	password : 'root',
 	database : 'nba'
